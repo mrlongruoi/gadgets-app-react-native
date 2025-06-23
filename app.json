@@ -1,8 +1,9 @@
 {
   "expo": {
     "name": "rn-shop",
+    "owner": "mrlongruoi",
     "scheme": "rn-shop",
-    "slug": "rn-shop",
+    "slug": "expo-nextjs",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -33,7 +34,7 @@
         "origin": false
       },
       "eas": {
-        "projectId": "75342980-e70d-47f8-988a-f5d95f39add5"
+        "projectId": "30b60f15-6e2c-44d6-9f08-c0b5f544d01f"
       }
     }
   }
