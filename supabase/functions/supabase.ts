@@ -1,5 +1,5 @@
 import { createClient } from 'jsr:@supabase/supabase-js@2';
-import Stripe from 'npm:stripe@^16.10.0';
+import Stripe from 'npm:stripe@^18.2.1';
 
 export const stripe = Stripe(Deno.env.get('STRIPE_SECRET_KEY'), {
   // This is needed to use the Fetch API rather than relying on the Node http
@@ -7,13 +7,13 @@ export const stripe = Stripe(Deno.env.get('STRIPE_SECRET_KEY'), {
   httpClient: Stripe.createFetchHttpClient(),
 });
 
-export const getOrCreateStripeCustonerForSupabaseUser = async (
+export const getOrCreateStripeCustomerForSupabaseUser = async (
   req: Request
 ) => {
   const authHeader = req.headers.get('Authorization')!;
   const supabaseClient = createClient(
-    Deno.env.get('SUPABASE_URL') ?? '',
-    Deno.env.get('SUPABASE_ANON_KEY') ?? '',
+    Deno.env.get('EXPO_PUBLIC_SUPABASE_URL') ?? '',
+    Deno.env.get('EXPO_PUBLIC_SUPABASE_ANON_KEY') ?? '',
     { global: { headers: { Authorization: authHeader } } }
   );
 

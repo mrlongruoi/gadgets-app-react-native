@@ -71,9 +71,13 @@ export const getCategoryAndProducts = (categorySlug: string) => {
 };
 
 export const getMyOrders = () => {
-  const {
-    user: { id },
-  } = useAuth();
+  const { user } = useAuth();
+
+  if (!user || !user.id) {
+    throw new Error('User not found. Vui lòng đăng nhập lại!');
+  }
+
+  const id = user.id;
 
   return useQuery({
     queryKey: ['orders', id],
@@ -95,10 +99,13 @@ export const getMyOrders = () => {
 };
 
 export const createOrder = () => {
-  const {
-    user: { id },
-  } = useAuth();
+  const { user } = useAuth();
 
+  if (!user || !user.id) {
+    throw new Error('User not found. Vui lòng đăng nhập lại!');
+  }
+
+  const id = user.id;
   const slug = generateOrderSlug();
 
   const queryClient = useQueryClient();
@@ -182,9 +189,13 @@ export const createOrderItem = () => {
 };
 
 export const getMyOrder = (slug: string) => {
-  const {
-    user: { id },
-  } = useAuth();
+  const { user } = useAuth();
+
+  if (!user || !user.id) {
+    throw new Error('User not found. Vui lòng đăng nhập lại!');
+  }
+
+  const id = user.id;
 
   return useQuery({
     queryKey: ['orders', slug],
